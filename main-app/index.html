@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主应用 - Qiankun</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      }
+      
+      #main-app {
+        min-height: 100vh;
+      }
+      
+      .header {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .header h1 {
+        font-size: 20px;
+        color: #1890ff;
+        margin: 0;
+      }
+      
+      .nav {
+        margin-left: 40px;
+        display: flex;
+        gap: 20px;
+      }
+      
+      .nav a {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.65);
+        transition: color 0.3s;
+        cursor: pointer;
+      }
+      
+      .nav a:hover,
+      .nav a.active {
+        color: #1890ff;
+      }
+      
+      .content {
+        padding: 24px;
+        background: #f0f2f5;
+        min-height: calc(100vh - 64px);
+      }
+      
+      #subapp-container {
+        background: #fff;
+        border-radius: 4px;
+        min-height: 500px;
+        padding: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-app">
+      <div class="header">
+        <h1>Qiankun 微前端主应用</h1>
+        <div class="nav">
+          <a href="/" onclick="navigateTo(event, '/')" class="active">首页</a>
+          <a href="/sub-app" onclick="navigateTo(event, '/sub-app')">子应用</a>
+        </div>
+      </div>
+      <div class="content">
+        <div id="subapp-container"></div>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script>
+      // 全局导航函数
+      function navigateTo(event, path) {
+        event.preventDefault();
+        window.history.pushState({}, '', path);
+        
+        // 更新导航样式
+        document.querySelectorAll('.nav a').forEach(link => {
+          link.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // 触发自定义路由事件
+        window.dispatchEvent(new CustomEvent('route-change', { detail: { path } }));
+      }
+    </script>
+  </body>
+</html>
