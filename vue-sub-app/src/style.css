@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+}
+
+.vue-micro {
+  width: 100%;
+  min-height: 460px;
+  padding: 28px;
+  background: #f7fbf8;
+}
+
+.vue-micro__hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #d7e7db;
+  border-radius: 8px;
+}
+
+.vue-micro__eyebrow {
+  margin: 0 0 10px;
+  color: #15803d;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vue-micro h2 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.vue-micro__copy {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: #526070;
+  line-height: 1.7;
+}
+
+.vue-micro__button {
+  flex: 0 0 auto;
+  min-width: 146px;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #16a34a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.vue-micro__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.vue-micro__card,
+.vue-micro__host {
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #d7e7db;
+  border-radius: 8px;
+}
+
+.vue-micro__card span,
+.vue-micro__host span {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.vue-micro__card strong,
+.vue-micro__host strong {
+  display: block;
+  color: #172033;
+  font-size: 18px;
+}
+
+.vue-micro__host {
+  margin-top: 18px;
+}
+
+@media (max-width: 720px) {
+  .vue-micro {
+    padding: 16px;
+  }
+
+  .vue-micro__hero {
+    display: block;
+  }
+
+  .vue-micro__button {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .vue-micro__grid {
+    grid-template-columns: 1fr;
+  }
+}

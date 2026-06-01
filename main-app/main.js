@@ -19,6 +19,15 @@ const apps = [
     props: {
       data: '来自主应用的数据：Next.js 子应用'
     }
+  },
+  {
+    name: 'vue-sub-app',
+    entry: '//localhost:8083',
+    container: '#subapp-container',
+    activeRule: '/vue-sub-app',
+    props: {
+      data: '来自主应用的数据：Vue 3 子应用'
+    }
   }
 ];
 
