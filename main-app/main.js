@@ -10,6 +10,15 @@ const apps = [
     props: {
       data: '来自主应用的数据'
     }
+  },
+  {
+    name: 'next-sub-app',
+    entry: '//localhost:8082/qiankun.html',
+    container: '#subapp-container',
+    activeRule: '/next-sub-app',
+    props: {
+      data: '来自主应用的数据：Next.js 子应用'
+    }
   }
 ];
 

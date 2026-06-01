@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #172033;
+}
+
+.next-micro {
+  width: 100%;
+  min-height: 460px;
+  padding: 28px;
+  background: #f8fafc;
+}
+
+.next-micro__hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #dbe5ef;
+  border-radius: 8px;
+}
+
+.next-micro__eyebrow {
+  margin: 0 0 10px;
+  color: #0f766e;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.next-micro h2 {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.next-micro__copy {
+  max-width: 620px;
+  margin: 12px 0 0;
+  color: #526070;
+  line-height: 1.7;
+}
+
+.next-micro__button {
+  flex: 0 0 auto;
+  min-width: 146px;
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.next-micro__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.next-micro__card,
+.next-micro__host {
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #dbe5ef;
+  border-radius: 8px;
+}
+
+.next-micro__card span,
+.next-micro__host span {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.next-micro__card strong,
+.next-micro__host strong {
+  display: block;
+  color: #172033;
+  font-size: 18px;
+}
+
+.next-micro__host {
+  margin-top: 18px;
+}
+
+@media (max-width: 720px) {
+  .next-micro {
+    padding: 16px;
+  }
+
+  .next-micro__hero {
+    display: block;
+  }
+
+  .next-micro__button {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .next-micro__grid {
+    grid-template-columns: 1fr;
+  }
+}
