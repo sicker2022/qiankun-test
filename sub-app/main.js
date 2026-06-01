@@ -1,3 +1,5 @@
+import { qiankunWindow, renderWithQiankun } from 'vite-plugin-qiankun/dist/helper';
+
 /**
  * 子应用入口文件
  * 需要导出三个生命周期函数：bootstrap、mount、unmount
@@ -76,28 +78,26 @@ export async function bootstrap() {
 export async function mount(props) {
   console.log('[子应用] mount 已执行', props);
   
-  // 确保容器存在
-  setTimeout(() => {
-    render(props);
-    
-    app = {
-      status: 'mounted',
-      ...props
-    };
-    
-    console.log('[子应用] 挂载完成');
-  }, 0);
+  render(props);
+  
+  app = {
+    status: 'mounted',
+    ...props
+  };
+  
+  console.log('[子应用] 挂载完成');
   
   return Promise.resolve();
 }
 
 // unmount 生命周期 - 应用卸载时调用（每次离开都会执行）
-export async function unmount() {
+export async function unmount(props = {}) {
   console.log('[子应用] unmount 已执行');
   
   // 彻底清理工作
   try {
-    const root = document.getElementById('app');
+    const { container } = props;
+    const root = container ? container.querySelector('#app') : document.getElementById('app');
     if (root) {
       root.innerHTML = '';
     }
@@ -119,8 +119,15 @@ export async function update(props) {
   render(props);
 }
 
+renderWithQiankun({
+  bootstrap,
+  mount,
+  unmount,
+  update
+});
+
 // 独立运行时直接渲染
-if (!window.__POWERED_BY_QIANKUN__) {
+if (!qiankunWindow.__POWERED_BY_QIANKUN__) {
   console.log('[子应用] 独立运行模式');
   render();
 }

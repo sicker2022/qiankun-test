@@ -14,35 +14,10 @@ const apps = [
 ];
 
 // 注册子应用
-registerMicroApps(apps, {
-  beforeLoad: [
-    app => {
-      console.log('[LifeCycle] before load %c%s', 'color: green;', app.name);
-      return Promise.resolve();
-    },
-  ],
-  beforeMount: [
-    app => {
-      console.log('[LifeCycle] before mount %c%s', 'color: green;', app.name);
-      return Promise.resolve();
-    },
-  ],
-  afterUnmount: [
-    app => {
-      console.log('[LifeCycle] after unmount %c%s', 'color: green;', app.name);
-      return Promise.resolve();
-    },
-  ],
-});
+registerMicroApps(apps);
 
 // 启动 qiankun
-start({
-  prefetch: true, // 启用预加载
-  sandbox: {
-    strictStyleIsolation: false, // 不使用严格样式隔离
-    experimentalStyleIsolation: true // 使用实验性样式隔离
-  }
-});
+start();
 
 console.log('所有子应用已加载完成');
 
@@ -66,8 +41,6 @@ function showHomePage() {
 function handleRouting() {
   const pathname = window.location.pathname;
   
-  console.log('当前路径:', pathname);
-  
   if (pathname === '/' || pathname === '/index.html') {
     showHomePage();
   }
@@ -90,6 +63,5 @@ window.addEventListener('route-change', () => {
 
 // 页面加载时初始化
 window.addEventListener('load', () => {
-  console.log('主应用已启动');
   handleRouting();
 });
